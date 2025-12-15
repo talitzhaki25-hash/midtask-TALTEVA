@@ -1,0 +1,386 @@
+:root {
+  --clr-main: #020617;        /* שחור-כחול עמוק (נשאר כהה ואלגנטי) */
+  --clr-main-alt: #166534;    /* ירוק טכנולוגי במקום כחול */
+  --clr-accent: #ff8c1a;      /* כתום ניאון (נשאר) */
+  --clr-accent-soft: #fff1e0;
+
+  /* ה-glow שהיה כחול הופך לירוק, כדי לשמר את “התחושה” המקורית */
+  --clr-glow-blue: #22c55e;
+  --clr-glow-orange: #ff9f3b;
+
+
+  --clr-correct: #48b87b;
+  --clr-incorrect: #f97373;
+  --clr-disabled: #d8d7d7;
+
+  --clr-text: #111827;
+  --clr-text-muted: #6b7280;
+  --clr-bg-1: #f5f7fb;
+  --clr-bg-2: #ffffff;
+  --clr-white: #ffffff;
+
+  --font-family-base: "Rubik", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-black: 900;
+}
+
+/* =========================================
+   General
+   ========================================= */
+
+body {
+  color: var(--clr-text);
+  background:
+          radial-gradient(circle at top, rgba(34, 197, 94, 0.18) 0, transparent 55%),
+          var(--clr-bg-1);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Headings */
+h1,
+.h1 {
+  font-weight: var(--font-weight-black);
+}
+
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* טקסט רגיל מעט רך יותר */
+p {
+  color: var(--clr-text-muted);
+}
+
+/* רקע שונה לסקשנים זוגיים */
+section:nth-of-type(even) {
+  background: var(--clr-bg-2);
+}
+
+/* =======================
+   Header / Brand bar
+   ======================= */
+
+.bg-brand {
+  background: linear-gradient(135deg, var(--clr-main) 0%, var(--clr-main-alt) 65%);
+  color: var(--clr-white) !important;
+}
+
+.text-on-brand {
+  color: var(--clr-white) !important;
+}
+
+/* קו תחתון עדין להפרדה */
+header.sticky-top {
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.35);
+}
+
+/* ניווט עליון – גלולות */
+header .nav-link {
+  border-radius: 999px;
+  color: var(--clr-white);
+  text-decoration: none;
+  padding-inline: 1rem;
+}
+
+header .nav-link:hover,
+header .nav-link:focus-visible {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #e5e7eb;
+}
+
+/* ===========================
+   תפריט ניווט – מצב מובייל
+   =========================== */
+
+/* ברירת מחדל במובייל: התפריט סגור */
+@media (max-width: 991.98px) {
+  #main-nav {
+    display: none;
+  }
+
+  #main-nav.is-open {
+    display: block;
+    margin-top: 0.75rem;
+  }
+
+  #main-nav .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* =========================================
+   Links
+   ========================================= */
+
+a {
+  color: var(--clr-main-alt);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover,
+a:focus {
+  color: var(--clr-main);
+  background: rgba(34, 197, 94, 0.08);
+  outline: 2px solid var(--clr-main-alt);
+  outline-offset: 2px;
+  text-decoration: none;
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+
+.btn-brand {
+  background: linear-gradient(135deg, var(--clr-accent) 0%, #ff9f3b 100%);
+  color: #111827;
+  border: none;
+  border-radius: 999px;
+  font-weight: var(--font-weight-semibold);
+  padding-inline: 1.5rem;
+  box-shadow: 0 10px 24px rgba(249, 115, 22, 0.45);
+}
+
+.btn-brand:hover,
+.btn-brand:focus-visible {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.btn-outline-brand {
+  background-color: transparent;
+  color: var(--clr-accent);
+  border-radius: 999px;
+  border: 1px solid var(--clr-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.btn-outline-brand:hover,
+.btn-outline-brand:focus-visible {
+  background-color: var(--clr-accent-soft);
+  color: #111827;
+}
+
+/* כפתור “מנוטרל” */
+.btn-disabled {
+  background-color: var(--clr-disabled) !important;
+  border-color: var(--clr-disabled) !important;
+  color: var(--clr-text) !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+}
+
+/* ספציפית לכפתור הסיום */
+#btn-finalize[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   Skip link – נגישות
+   ========================================= */
+
+
+.skip-link {
+  position: absolute;
+  top: -1000px;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--clr-main);
+  color: var(--clr-white);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 3px solid var(--clr-accent);
+}
+
+/* =========================================
+   Intro section
+   ========================================= */
+
+#intro {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+#intro .container {
+  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.30), transparent 55%),
+  linear-gradient(135deg, var(--clr-main-alt), var(--clr-main));
+  border-radius: 2rem;
+  padding: 2.5rem 2rem;
+  color: var(--clr-white);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.45);
+}
+
+.intro-btn-wrap {
+  margin-top: 2rem;
+  text-align: right;   /* מחזיר את הכפתור הצידה לימין */
+}
+
+
+#intro h2,
+#intro p {
+  color: var(--clr-white);
+}
+
+/* הקובייה של התמונה/טקסט בצד ימין */
+#intro figure {
+  background: rgba(15, 23, 42, 0.45) !important;
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
+  padding: 0.75rem;
+  text-align: center;
+}
+
+/* אם בעתיד תכניסי תמונה אמיתית */
+#intro img {
+  max-height: 260px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 767.98px) {
+  #intro .container {
+    padding: 2rem 1.5rem;
+  }
+
+  #intro img {
+    max-height: 200px;
+  }
+}
+
+
+/* ===== יחידות ההכשרה – כרטיסיות ===== */
+
+#units {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background: #f5f7fb;
+}
+
+.unit-card {
+  background-color: var(--clr-white);
+  border-radius: 1.25rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem 1.5rem 1.75rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.unit-card:hover,
+.unit-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+
+.unit-card h3 {
+  color: var(--clr-main);
+}
+
+.unit-card p {
+  margin-bottom: 0;
+}
+
+/* תג קטן בפינה עליונה */
+.unit-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-semibold);
+  background-color: rgba(34, 197, 94, 0.12);
+  color: #166534;
+}
+
+
+/* =========================================
+   Quiz section
+   ========================================= */
+
+#quiz {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background: radial-gradient(circle at top, #dcfce7 0, var(--clr-bg-1) 45%, #ffffff 100%);
+}
+
+#quiz article {
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  background-color: var(--clr-white);
+  box-shadow: 0 14px 30px rgba(148, 163, 184, 0.32);
+}
+
+/* הדגשת שאלה נכונה / לא נכונה – לשימוש ב-JS בהמשך */
+#quiz article.is-correct {
+  border-color: var(--clr-correct) !important;
+}
+
+#quiz article.is-incorrect {
+  border-color: var(--clr-incorrect) !important;
+}
+
+/* בלוק פידבק */
+#quiz .q-feedback {
+  margin-top: 0.75rem;
+}
+
+/* =========================================
+   Anchor scroll offset for sticky header
+   ========================================= */
+
+section {
+  scroll-margin-top: 6rem;
+}
+
+@media (max-width: 767.98px) {
+  section {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* =========================================
+   Completion & Footer
+   ========================================= */
+
+#completion {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  background: linear-gradient(180deg, var(--clr-bg-1) 0%, #ffffff 100%);
+}
+
+footer {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+footer a {
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus-visible {
+  color: var(--clr-accent-soft);
+  text-decoration: underline;
+}
